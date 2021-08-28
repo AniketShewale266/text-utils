@@ -36,24 +36,34 @@ export default function TextForm(props) {
         
     }
     const handleextractclick = () => {
+
+     
+        function extractEmails(text)
+        {
+            let val = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+            if(val){
+                props.showAlert("Mail has been extracted","success");
+                setText(val.join('\n'));
+            }
+            else{
+               
+            }
+        }
+        extractEmails(text);
+       
         
         // function extractEmails(text)
         // {
-        //     return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+        //     let newText = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+        //     setText(newText.join('\n'));
         // }
-        // let newText = extractEmails(text);
-        // setText(newText.join('\n'));
+        // // let newText = extractEmails(text);
+        // // setText(newText.join('\n'));
+        // extractEmails(text);
+        // props.showAlert("Mail has been extracted","success");
 
-        function extractEmails(text)
-        {
-            let newText = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
-            setText(newText.join('\n'));
-        }
-        // let newText = extractEmails(text);
-        // setText(newText.join('\n'));
-        extractEmails(text);
-        props.showAlert("Mail has been extracted","success");
- 
+
+
         }
         const handlecopytextclick = () => {
             const text = document.getElementById('myBox');
