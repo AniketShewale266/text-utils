@@ -77,15 +77,8 @@ export default function TextForm(props) {
         // const wordcount = (text)=>{
         //     return text.split(" ").length
         // }
-        function count_words(text)
-        {
-           text = text.replace(/(^\s*)|(\s*$)/gi,"");
-           text = text.replace(/[ ]{2,}/gi," ");
-           text = text.replace(/\n /,"\n");
-           return text.split(' ').length;
-        }
+        
        
-
     const [text, setText] = useState("");
 
     // setText("Aniket is great"); // Correct way to change the state
@@ -109,7 +102,7 @@ export default function TextForm(props) {
 
             <div className="container my-3" style={{color:props.mode==='dark'?'white':'#042743'}}>
                 <h2>Your text Summary</h2>
-                <b><p>{count_words(text)} words and {text.length} characters</p></b>
+                <b><p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p></b>
                 <b><p>{0.008 * text.split(" ").length} Minutes read</p></b>
                 <b><h2>Preview</h2></b>
                 {/* <b><p>{text}</p></b> */}
